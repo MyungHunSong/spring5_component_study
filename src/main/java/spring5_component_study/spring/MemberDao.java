@@ -1,9 +1,12 @@
-package spring5_component_study.di;
+package spring5_component_study.spring;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberDao {
 	
 	private static long nexId=0;

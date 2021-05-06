@@ -8,15 +8,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import spring5_component_study.config.AppCtx;
-import spring5_component_study.di.ChangePasswordService;
-import spring5_component_study.di.MemberInfoPrinter;
-import spring5_component_study.di.MemberListPrinter;
-import spring5_component_study.di.MemberRegisterService;
-import spring5_component_study.di.RegisterRequest;
-import spring5_component_study.di.VersionPrinter;
 import spring5_component_study.exception.DuplicateMemberException;
 import spring5_component_study.exception.MemberNotFoundException;
 import spring5_component_study.exception.WrongIdPasswordException;
+import spring5_component_study.spring.ChangePasswordService;
+import spring5_component_study.spring.MemberInfoPrinter;
+import spring5_component_study.spring.MemberListPrinter;
+import spring5_component_study.spring.MemberRegisterService;
+import spring5_component_study.spring.RegisterRequest;
+import spring5_component_study.spring.VersionPrinter;
 
 public class MainForSpring {
 	private static ApplicationContext ctx = null;
@@ -68,13 +68,13 @@ public class MainForSpring {
 			printHelp();
 			return;
 		}
-		MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter",MemberInfoPrinter.class);
+		MemberInfoPrinter infoPrinter = ctx.getBean(MemberInfoPrinter.class);
 		infoPrinter.printMemberInfo(split[1]);
 	}
 
 	// 전채 리스트 출력
 	private static void processListCommand() {
-		MemberListPrinter listPrinter = ctx.getBean("listPrinter", MemberListPrinter.class);
+		MemberListPrinter listPrinter = ctx.getBean( MemberListPrinter.class);
 		listPrinter.printAll();
 		
 	}
@@ -84,7 +84,7 @@ public class MainForSpring {
 			printHelp();
 			return;
 		}
-		MemberRegisterService regSvc = ctx.getBean("memberRegSvc",MemberRegisterService.class);
+		MemberRegisterService regSvc = ctx.getBean(MemberRegisterService.class);
 		RegisterRequest req = new RegisterRequest();
 		
 		req.setEmail(split[1]);
@@ -106,7 +106,7 @@ public class MainForSpring {
 	}
 
 	private static void processChangeCommand(String[] split) {
-		ChangePasswordService changePwdSvc = ctx.getBean("changePwdSvc", ChangePasswordService.class);
+		ChangePasswordService changePwdSvc = ctx.getBean( ChangePasswordService.class);
 		try {
 			changePwdSvc.changePassword(split[1], split[2], split[3]);
 			System.out.println("암호를 변경했습니다./n");

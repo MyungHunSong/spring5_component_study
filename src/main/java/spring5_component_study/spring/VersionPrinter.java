@@ -1,6 +1,4 @@
-package spring5_component_study.di;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package spring5_component_study.spring;
 
 public class VersionPrinter {
 	

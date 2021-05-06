@@ -1,7 +1,10 @@
-package spring5_component_study.di;
+package spring5_component_study.spring;
 
 import java.util.Collection;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberListPrinter {
 	private MemberDao memberDao;
 	private MemberPrinter printer;
